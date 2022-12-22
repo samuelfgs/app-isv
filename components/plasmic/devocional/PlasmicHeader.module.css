@@ -1,0 +1,139 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-kS5LJ-7c4);
+  position: relative;
+  min-width: 0;
+  padding: 24px 8px 10px;
+}
+.img {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.img > picture > img {
+  object-fit: cover;
+}
+.img > :global(.__wab_img-spacer) > img {
+  object-fit: cover;
+}
+.imgbiblePage {
+  order: 1;
+}
+.freeBox__keRq5 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  align-self: auto;
+  left: 0px;
+  top: 33px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.freeBoxbiblePage__keRq5R33Jt {
+  display: none;
+}
+.slotTargetSlot {
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+}
+.avatar:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: var(--token-wr_HKWkGB);
+  height: var(--token-wr_HKWkGB);
+  flex-shrink: 0;
+}
+.avatarbiblePage:global(.__wab_instance) {
+  display: none;
+}
+.freeBox__pKjKg {
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+  padding: 0px;
+}
+.freeBox__pKjKg > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-width: 0;
+  margin-left: calc(0px - 2px);
+  width: calc(100% + 2px);
+}
+.freeBox__pKjKg > :global(.__wab_flex-container) > *,
+.freeBox__pKjKg > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__pKjKg > :global(.__wab_flex-container) > picture > img,
+.freeBox__pKjKg
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 2px;
+}
+.freeBoxbiblePage__pKjKGr33Jt {
+  display: flex;
+}
+.freeBox__pInhp {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-ScWXUUrbv);
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  padding: 8px;
+}
+.freeBoxbiblePage__pInhPr33Jt {
+  display: flex;
+}
+.text__gLoA {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  min-width: 0;
+  display: block;
+}
+.freeBox__a76Sx {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-ScWXUUrbv);
+  border-top-right-radius: 30%;
+  border-bottom-right-radius: 30%;
+  padding: 8px;
+}
+.freeBoxbiblePage__a76Sxr33Jt {
+  display: flex;
+}
+.text {
+  width: auto;
+  height: auto;
+  max-width: 800px;
+}

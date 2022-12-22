@@ -1,0 +1,106 @@
+.root {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-hEhaJs-JO);
+  position: relative;
+  min-width: 0;
+  padding: 0px;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  margin-left: calc(0px - 25px);
+  width: calc(100% + 25px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-left: 25px;
+}
+.link__aabM8 {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 8px;
+}
+.svg__xa7Ty {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-kS5LJ-7c4);
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.text__qofdp {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  color: var(--token-kS5LJ-7c4);
+  min-width: 0;
+}
+.link__tj2Uw {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 8px;
+}
+.svg__ca5Bm {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-kS5LJ-7c4);
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.text__mbJe {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  color: var(--token-kS5LJ-7c4);
+  min-width: 0;
+}
+.link___1ZhdH {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 8px;
+}
+.svg__go6Q {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-kS5LJ-7c4);
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.text___3OByz {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  color: var(--token-kS5LJ-7c4);
+  min-width: 0;
+}

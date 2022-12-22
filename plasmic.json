@@ -1,0 +1,314 @@
+{
+  "platform": "nextjs",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox",
+    "reactRuntime": "classic"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
+  },
+  "images": {
+    "scheme": "public-files",
+    "publicDir": "../public",
+    "publicUrlPrefix": "/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "gerk99sqDLqAi3xSqDhGNs",
+      "projectApiToken": "Kx0ohw3b0GV8sSmm1QLyipQTfLQ6sOgcyOATMQW0rvONC3kZ4IUK5oGUihEkIkdieN7DZLbJpyYNkntP89SYg",
+      "projectName": "devocional",
+      "version": "latest",
+      "cssFilePath": "plasmic/devocional/plasmic_devocional.module.css",
+      "components": [
+        {
+          "id": "bJOR6A1G0Y6",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "VJAoJHfiRt",
+          "name": "Header",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicHeader.tsx",
+          "importSpec": {
+            "modulePath": "Header.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicHeader.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "4xq6KX_FCQ",
+          "name": "Footer",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicFooter.tsx",
+          "importSpec": {
+            "modulePath": "Footer.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicFooter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "TPLQbpBjjU",
+          "name": "Bible",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicBible.tsx",
+          "importSpec": {
+            "modulePath": "../pages/bible/[version]/[book]/[chapter].tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicBible.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "B3F684OR7c",
+          "name": "SelectChapter",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicSelectChapter.tsx",
+          "importSpec": {
+            "modulePath": "SelectChapter.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicSelectChapter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Zx9A6DxqtB",
+          "name": "Avatar",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicAvatar.tsx",
+          "importSpec": {
+            "modulePath": "Avatar.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicAvatar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "gLt5fbNKMG",
+          "name": "Calendario",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicCalendario.tsx",
+          "importSpec": {
+            "modulePath": "../pages/calendario.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicCalendario.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "b-yBAoSFVG",
+          "name": "SpaceForFixed",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicSpaceForFixed.tsx",
+          "importSpec": {
+            "modulePath": "SpaceForFixed.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicSpaceForFixed.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "j6IfZ_mJCm",
+          "name": "Devocional",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicDevocional.tsx",
+          "importSpec": {
+            "modulePath": "../pages/devocional/[day]/[month]/[year].tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicDevocional.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "az5Tv6-qkFR",
+          "name": "Post",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicPost.tsx",
+          "importSpec": {
+            "modulePath": "Post.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicPost.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "d1IXvSf1Cl",
+          "name": "Comment",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicComment.tsx",
+          "importSpec": {
+            "modulePath": "Comment.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicComment.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Uta01PJWGq",
+          "name": "Login",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicLogin.tsx",
+          "importSpec": {
+            "modulePath": "../pages/login.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicLogin.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        }
+      ],
+      "icons": [
+        {
+          "id": "E0yJQNlPk9",
+          "name": "LikeIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Like.tsx"
+        },
+        {
+          "id": "X_VrYnSbgs",
+          "name": "CommentIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Comment.tsx"
+        },
+        {
+          "id": "RXMUG7azNn",
+          "name": "BookIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Book.tsx"
+        },
+        {
+          "id": "2cUvZC8goR",
+          "name": "CalendarIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Calendar.tsx"
+        },
+        {
+          "id": "GQWJstYa6V",
+          "name": "MuralIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Mural.tsx"
+        },
+        {
+          "id": "Daa5zZP-A",
+          "name": "ChevronLeftIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__ChevronLeft.tsx"
+        },
+        {
+          "id": "hTfKAKd01",
+          "name": "ChevronRightIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__ChevronRight.tsx"
+        },
+        {
+          "id": "znmH5d3Ur",
+          "name": "ChevronDownIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__ChevronDown.tsx"
+        },
+        {
+          "id": "JCI1jingh",
+          "name": "UserIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__User.tsx"
+        },
+        {
+          "id": "SZMvTzr6S",
+          "name": "SendIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Send.tsx"
+        }
+      ],
+      "images": [
+        {
+          "id": "2YGQ7HCH6",
+          "name": "isv",
+          "filePath": "../public/plasmic/devocional/images/isv.png"
+        }
+      ],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "codeComponents": [
+        {
+          "id": "wRnwmwdHTN",
+          "name": "PlasmicHead",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "-bZ_5YAgwG",
+          "name": "Fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        },
+        {
+          "id": "LxGfpzwDwn",
+          "name": "Fetcher",
+          "componentImportPath": "./pages/plasmic-host"
+        },
+        {
+          "id": "YiApBrkKpK",
+          "name": "TextArea",
+          "componentImportPath": "./components/code-components/TextArea"
+        }
+      ]
+    },
+    {
+      "projectId": "YUiM7yqBWAqsh8KSnrdj7",
+      "projectApiToken": "yLKpJOE8mD6HqoNCSWF3Em8ut0LBzL7qb3QPqNeOLPjQsSBSc12yhYovnSRSekzgt1xjjbugBGDjOMLGMK4w",
+      "projectName": "plasmic-query",
+      "version": "0.9.0",
+      "cssFilePath": "plasmic/plasmic_query/plasmic_plasmic_query.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "codeComponents": [
+        {
+          "id": "ae7V86eNoXA",
+          "name": "DataFetcher",
+          "componentImportPath": "@plasmicpkgs/plasmic-query"
+        },
+        {
+          "id": "0DrxdjD45dkx",
+          "name": "GraphqlFetcher",
+          "componentImportPath": "@plasmicpkgs/plasmic-query"
+        }
+      ],
+      "jsBundleThemes": []
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": [
+      {
+        "id": "FdBq7Zk73tmz",
+        "name": "Screen",
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "contextFilePath": "plasmic/devocional/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
+  },
+  "wrapPagesWithGlobalContexts": true,
+  "nextjsConfig": {
+    "pagesDir": "../pages"
+  },
+  "cliVersion": "0.1.190",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.190/dist/plasmic.schema.json"
+}

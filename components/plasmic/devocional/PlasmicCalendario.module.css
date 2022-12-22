@@ -1,0 +1,214 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+.freeBox__yLe4 {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0px 1px 4px 0px #00000033;
+  min-width: 0;
+  padding: 0px;
+}
+.header:global(.__wab_instance) {
+  max-width: 100%;
+}
+.text___2PmC {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  min-width: 0;
+  display: block;
+}
+.spaceForFixed__mv3De:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.freeBox__hrJjk {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 4px;
+}
+.freeBox__xSxNj {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 15px;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__sGg5Q {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-hEhaJs-JO);
+  border-radius: 50%;
+  padding: 0px;
+}
+.svg__ygVt {
+  object-fit: cover;
+  max-width: 100%;
+  width: var(--token-i6rk5p67B);
+  height: var(--token-i6rk5p67B);
+  color: var(--token-kS5LJ-7c4);
+  flex-shrink: 0;
+}
+.text__cSFlt {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  text-align: center;
+  min-width: 0;
+}
+.freeBox__ysDjr {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-hEhaJs-JO);
+  border-radius: 50%;
+  padding: 0px;
+}
+.svg__zsGi2 {
+  object-fit: cover;
+  max-width: 100%;
+  width: var(--token-i6rk5p67B);
+  height: var(--token-i6rk5p67B);
+  color: var(--token-kS5LJ-7c4);
+  flex-shrink: 0;
+}
+.freeBox__bMlSg {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox___6MrcV {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.text__a1ErD {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 800px;
+}
+.freeBox___5NoKl {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+.text__fBoGb {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  font-size: 10px;
+  text-align: right;
+  padding-right: 8px;
+  margin-top: 4px;
+  color: var(--token-ScWXUUrbv);
+  min-width: 0;
+}
+.text__slxVa {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  font-size: 10px;
+  text-align: right;
+  padding-right: 8px;
+  margin-top: 4px;
+  min-width: 0;
+}
+.freeBox__bFls4 {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 2px;
+}
+.text__nklKw {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  font-size: 8px;
+  min-width: 0;
+}
+.spaceForFixed___8Pgca:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.footer:global(.__wab_instance) {
+  max-width: 100%;
+  position: fixed;
+  left: 0;
+  top: auto;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+}

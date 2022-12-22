@@ -1,0 +1,79 @@
+{
+  "props": [
+    {
+      "name": "action-bar-icons",
+      "type": "spacing",
+      "value": "15px",
+      "category": "spacing",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "WPoN-JGfv"
+      }
+    },
+    {
+      "name": "bible-pill",
+      "type": "color",
+      "value": "#D4D3D3",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "ScWXUUrbv"
+      }
+    },
+    {
+      "name": "chapter-size",
+      "type": "spacing",
+      "value": "25px",
+      "category": "spacing",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "i6rk5p67B"
+      }
+    },
+    {
+      "name": "main-bg",
+      "type": "color",
+      "value": "#FFFFFF",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "kS5LJ-7c4"
+      }
+    },
+    {
+      "name": "main-fg",
+      "type": "color",
+      "value": "#000000",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "hEhaJs-JO"
+      }
+    },
+    {
+      "name": "second-bg",
+      "type": "color",
+      "value": "#FAFAFA",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "B1XkmwTb4"
+      }
+    },
+    {
+      "name": "user",
+      "type": "spacing",
+      "value": "35px",
+      "category": "spacing",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "wr_HKWkGB"
+      }
+    }
+  ],
+  "global": {
+    "meta": {
+      "source": "plasmic.app"
+    }
+  }
+}
