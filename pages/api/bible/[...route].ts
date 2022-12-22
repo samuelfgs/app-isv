@@ -6,7 +6,7 @@ import nvi from "../../../data/nvi.json";
 interface BibleBook {
   abbrev: string;
   name: string;
-  chapters: string[];
+  chapters: string[][];
 }
 
 const bible: Record<string, BibleBook[]> = {
