@@ -188,7 +188,11 @@ function PlasmicDevocional__RenderFunc(props: {
 
           {true ? (
             <div className={classNames(projectcss.all, sty.freeBox__fGvHx)}>
-              <div className={classNames(projectcss.all, sty.freeBox__hwW8S)}>
+              <p.Stack
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__hwW8S)}
+              >
                 <TextArea
                   data-plasmic-name={"textArea"}
                   data-plasmic-override={overrides.textArea}
@@ -203,7 +207,7 @@ function PlasmicDevocional__RenderFunc(props: {
                   className={classNames(projectcss.all, sty.svg)}
                   role={"img"}
                 />
-              </div>
+              </p.Stack>
 
               <Footer
                 data-plasmic-name={"footer"}
