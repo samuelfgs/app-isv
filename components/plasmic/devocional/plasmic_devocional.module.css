@@ -11,7 +11,7 @@
   --plasmic-token-action-bar-icons: var(--token-WPoN-JGfv);
   --token-i6rk5p67B: 25px;
   --plasmic-token-chapter-size: var(--token-i6rk5p67B);
-  --token-ScWXUUrbv: #d4d3d3;
+  --token-ScWXUUrbv: #a2a2a2;
   --plasmic-token-bible-pill: var(--token-ScWXUUrbv);
   --token-wr_HKWkGB: 35px;
   --plasmic-token-user: var(--token-wr_HKWkGB);
@@ -23,7 +23,7 @@
 
 .plasmic_default_styles {
   --mixin-t0AoVTYZNTI_font-family: "Inter", sans-serif;
-  --mixin-t0AoVTYZNTI_font-size: 12px;
+  --mixin-t0AoVTYZNTI_font-size: 14px;
   --mixin-t0AoVTYZNTI_font-weight: 400;
   --mixin-t0AoVTYZNTI_font-style: normal;
   --mixin-t0AoVTYZNTI_color: var(--token-hEhaJs-JO);
