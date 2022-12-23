@@ -95,6 +95,7 @@
   height: auto;
   background: var(--token-ScWXUUrbv);
   font-family: "Inter", sans-serif;
+  font-size: 16px;
   min-width: 0;
   border: 1px solid var(--token-ScWXUUrbv);
 }
