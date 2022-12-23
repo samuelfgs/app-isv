@@ -19,7 +19,7 @@ function Bible() {
 }
 
 export async function getStaticPaths() {
-  const books = await (await fetch("http://localhost:3000/api/bible/books/")).json() as { abbrev: string, name: string, chapters: number }[];
+  const books = await (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/bible/books/`)).json() as { abbrev: string, name: string, chapters: number }[];
   const versions = ["nvi"];
   return {
     paths: versions.flatMap(version => 
