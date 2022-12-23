@@ -8,12 +8,14 @@ export default function Page() {
       const { data, error } = await supabase.auth.getSession();
       if (!data || !data.session || error) {
         router.push("/login");
+        debugger;
         return;
       }
       const { email, name, avatar_url}  = data.session.user.user_metadata;
       const { data: profileData, error: profileError } = await 
         supabase.from("profiles").select().filter("email", "eq", email);
       if (profileError) {
+        debugger;
         router.push("/login");
         return ;
       }
@@ -26,6 +28,7 @@ export default function Page() {
           });
 
         if (insertErrorProfile) {
+          debugger;
           router.push("/login");
           return ;
         }

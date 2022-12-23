@@ -6,27 +6,13 @@ import * as ph from "@plasmicapp/host";
 import { ScreenVariantProvider } from "../components/plasmic/devocional/PlasmicGlobalVariant__Screen";
 import { PlasmicHomepage } from "../components/plasmic/devocional/PlasmicHomepage";
 import { useRouter } from "next/router";
-import { usePlasmicQueryData } from "@plasmicapp/query";
 import AvatarMenu from "../components/AvatarMenu";
 import { Session } from "@supabase/supabase-js";
 import { supabase } from "../components/supabase/supabase";
 import { useIsLoggedIn } from "../components/hooks";
 
-const getAvatarUrl = (session: Session | null) => {
-  if (!session) {
-    return undefined;
-  }
-  if ("avatar_url" in session.user.user_metadata) {
-    return session.user.user_metadata.avatar_url;
-  }
-  return undefined;
-}
-
 function Homepage() {
-  const { data, error } = usePlasmicQueryData("logged_user", async() => {
-    const { data, error } = await supabase.auth.getSession();
-    return data;
-  });
+  
   useIsLoggedIn();
   return (
     <ph.PageParamsProvider
@@ -34,11 +20,6 @@ function Homepage() {
       query={useRouter()?.query}
     >
       <PlasmicHomepage
-        header={{
-          avatar: data ? 
-              <AvatarMenu url={getAvatarUrl(data?.session)} />
-              : null
-        }}
       />
     </ph.PageParamsProvider>
   );

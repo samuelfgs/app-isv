@@ -8,10 +8,28 @@ import {
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
 import { supabase } from "./supabase/supabase";
 import { useRouter } from "next/router";
+import { Session } from "@supabase/supabase-js";
+import { usePlasmicQueryData } from "@plasmicapp/query";
 
 export interface AvatarMenuProps extends DefaultAvatarMenuProps {}
 
+
+export const getAvatarUrl = (session?: Session | null) => {
+  if (!session) {
+    return undefined;
+  }
+  if ("avatar_url" in session.user.user_metadata) {
+    return session.user.user_metadata.avatar_url;
+  }
+  return undefined;
+}
+
 function AvatarMenu_(props: AvatarMenuProps, ref: HTMLElementRefOf<"div">) {
+  const { data, error } = usePlasmicQueryData("logged_user", async() => {
+    const { data, error } = await supabase.auth.getSession();
+    return data;
+  });
+  
   const router = useRouter();
   const onLogout = async() => {
     const { error } = await supabase.auth.signOut();
@@ -26,6 +44,7 @@ function AvatarMenu_(props: AvatarMenuProps, ref: HTMLElementRefOf<"div">) {
     logout={{
       onClick: onLogout
     }}
+    url={getAvatarUrl(data?.session)}
   />;
 }
 
