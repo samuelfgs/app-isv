@@ -36,6 +36,7 @@ import {
 } from "@plasmicapp/react-web";
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
 import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
+import { SupabaseFetcher } from "../../supabase/supabase"; // plasmic-import: HX-SzYOed0/codeComponent
 import Post from "../../Post"; // plasmic-import: az5Tv6-qkFR/component
 import Footer from "../../Footer"; // plasmic-import: 4xq6KX_FCQ/component
 
@@ -50,13 +51,17 @@ export type PlasmicHomepage__VariantsArgs = {};
 type VariantPropType = keyof PlasmicHomepage__VariantsArgs;
 export const PlasmicHomepage__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicHomepage__ArgsType = {};
+export type PlasmicHomepage__ArgsType = {
+  months?: any;
+};
+
 type ArgPropType = keyof PlasmicHomepage__ArgsType;
-export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
+export const PlasmicHomepage__ArgProps = new Array<ArgPropType>("months");
 
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
   header?: p.Flex<typeof Header>;
+  supabaseFetcher?: p.Flex<typeof SupabaseFetcher>;
   post?: p.Flex<typeof Post>;
   footer?: p.Flex<typeof Footer>;
 };
@@ -76,8 +81,22 @@ function PlasmicHomepage__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
-
+        {
+          months: [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+          ]
+        },
         props.args
       ),
     [props.args]
@@ -151,66 +170,80 @@ function PlasmicHomepage__RenderFunc(props: {
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__kuL90)}
             >
-              {true
-                ? (
-                    (() => {
-                      try {
-                        return [...Array(8).keys()];
-                      } catch (e) {
-                        if (e instanceof TypeError) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })() ?? []
-                  ).map((currentItem, currentIndex) => (
-                    <p.Stack
-                      as={"div"}
-                      hasGap={true}
-                      className={classNames(projectcss.all, sty.freeBox__mrw4A)}
-                      key={currentIndex}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pbNNt
-                        )}
-                      >
-                        {(() => {
-                          try {
-                            return `${20 - currentIndex} de Janeiro`;
-                          } catch (e) {
-                            if (e instanceof TypeError) {
-                              return "01 de Janeiro";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </div>
-
-                      {true ? (
-                        <Post
-                          data-plasmic-name={"post"}
-                          data-plasmic-override={overrides.post}
-                          author={(() => {
+              <SupabaseFetcher
+                data-plasmic-name={"supabaseFetcher"}
+                data-plasmic-override={overrides.supabaseFetcher}
+                ascending={false}
+                className={classNames("__wab_instance", sty.supabaseFetcher)}
+                order={"date" as const}
+                table={"posts" as const}
+              >
+                <ph.DataCtxReader>
+                  {$ctx =>
+                    true
+                      ? (
+                          (() => {
                             try {
-                              return `Palavra do ${
-                                currentIndex % 2 ? "Beda" : "Fabinho"
-                              }`;
+                              return $ctx.supabase;
                             } catch (e) {
                               if (e instanceof TypeError) {
-                                return "Palavra do Beda";
+                                return [];
                               }
                               throw e;
                             }
-                          })()}
-                          className={classNames("__wab_instance", sty.post)}
-                        />
-                      ) : null}
-                    </p.Stack>
-                  ))
-                : null}
+                          })() ?? []
+                        ).map((currentPost, currentPostIndex) => (
+                          <p.Stack
+                            as={"div"}
+                            hasGap={true}
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__mrw4A
+                            )}
+                            key={currentPostIndex}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__pbNNt
+                              )}
+                            >
+                              {(() => {
+                                const [year, month, day] =
+                                  currentPost.date.split("-");
+                                return `${day} de ${
+                                  $props.months[month - 1]
+                                } de ${year}`;
+                              })()}
+                            </div>
+
+                            {true ? (
+                              <Post
+                                data-plasmic-name={"post"}
+                                data-plasmic-override={overrides.post}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.post
+                                )}
+                                pid={(() => {
+                                  try {
+                                    return currentPost.id;
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              />
+                            ) : null}
+                          </p.Stack>
+                        ))
+                      : null
+                  }
+                </ph.DataCtxReader>
+              </SupabaseFetcher>
             </p.Stack>
           ) : null}
 
@@ -228,8 +261,9 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "header", "post", "footer"],
+  root: ["root", "header", "supabaseFetcher", "post", "footer"],
   header: ["header"],
+  supabaseFetcher: ["supabaseFetcher", "post"],
   post: ["post"],
   footer: ["footer"]
 } as const;
@@ -239,6 +273,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: typeof Header;
+  supabaseFetcher: typeof SupabaseFetcher;
   post: typeof Post;
   footer: typeof Footer;
 };
@@ -305,6 +340,7 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
+    supabaseFetcher: makeNodeComponent("supabaseFetcher"),
     post: makeNodeComponent("post"),
     footer: makeNodeComponent("footer"),
 

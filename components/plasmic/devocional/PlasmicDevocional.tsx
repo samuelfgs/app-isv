@@ -37,6 +37,7 @@ import {
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
 import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 import SpaceForFixed from "../../SpaceForFixed"; // plasmic-import: b-yBAoSFVG/component
+import { SupabaseFetcher } from "../../supabase/supabase"; // plasmic-import: HX-SzYOed0/codeComponent
 import Post from "../../Post"; // plasmic-import: az5Tv6-qkFR/component
 import { TextArea } from "../../code-components/TextArea"; // plasmic-import: YiApBrkKpK/codeComponent
 import Footer from "../../Footer"; // plasmic-import: 4xq6KX_FCQ/component
@@ -64,10 +65,11 @@ export const PlasmicDevocional__ArgProps = new Array<ArgPropType>("months");
 export type PlasmicDevocional__OverridesType = {
   root?: p.Flex<"div">;
   header?: p.Flex<typeof Header>;
+  supabaseFetcher?: p.Flex<typeof SupabaseFetcher>;
   text?: p.Flex<"div">;
   post?: p.Flex<typeof Post>;
   textArea?: p.Flex<typeof TextArea>;
-  svg?: p.Flex<"svg">;
+  send?: p.Flex<"svg">;
   footer?: p.Flex<typeof Footer>;
 };
 
@@ -152,33 +154,74 @@ function PlasmicDevocional__RenderFunc(props: {
             height={90 as const}
           />
 
-          <div
-            data-plasmic-name={"text"}
-            data-plasmic-override={overrides.text}
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text
-            )}
-          >
-            {(() => {
+          <SupabaseFetcher
+            data-plasmic-name={"supabaseFetcher"}
+            data-plasmic-override={overrides.supabaseFetcher}
+            className={classNames("__wab_instance", sty.supabaseFetcher)}
+            filters={(() => {
               try {
-                return `${$ctx.params.day} de ${
-                  $props.months[$ctx.params.month]
-                } de ${$ctx.params.year}`;
+                return [
+                  {
+                    column: "id",
+                    operator: "eq",
+                    value: $ctx.params.pid
+                  }
+                ];
               } catch (e) {
                 if (e instanceof TypeError) {
-                  return "Enter some text";
+                  return undefined;
                 }
                 throw e;
               }
             })()}
-          </div>
+            table={"posts" as const}
+          >
+            <ph.DataCtxReader>
+              {$ctx => (
+                <div
+                  data-plasmic-name={"text"}
+                  data-plasmic-override={overrides.text}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text
+                  )}
+                >
+                  {(() => {
+                    try {
+                      return (() => {
+                        const [year, month, day] =
+                          $ctx.supabase[0].date.split("-");
+                        return [day, $props.months[month - 1], year].join(
+                          " de "
+                        );
+                      })();
+                    } catch (e) {
+                      if (e instanceof TypeError) {
+                        return "Enter some text";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </div>
+              )}
+            </ph.DataCtxReader>
+          </SupabaseFetcher>
 
           <Post
             data-plasmic-name={"post"}
             data-plasmic-override={overrides.post}
             className={classNames("__wab_instance", sty.post)}
+            pid={(() => {
+              try {
+                return $ctx.params.pid;
+              } catch (e) {
+                if (e instanceof TypeError) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
           />
 
           <SpaceForFixed
@@ -202,9 +245,9 @@ function PlasmicDevocional__RenderFunc(props: {
                 />
 
                 <SendIcon
-                  data-plasmic-name={"svg"}
-                  data-plasmic-override={overrides.svg}
-                  className={classNames(projectcss.all, sty.svg)}
+                  data-plasmic-name={"send"}
+                  data-plasmic-override={overrides.send}
+                  className={classNames(projectcss.all, sty.send)}
                   role={"img"}
                 />
               </p.Stack>
@@ -223,12 +266,22 @@ function PlasmicDevocional__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "header", "text", "post", "textArea", "svg", "footer"],
+  root: [
+    "root",
+    "header",
+    "supabaseFetcher",
+    "text",
+    "post",
+    "textArea",
+    "send",
+    "footer"
+  ],
   header: ["header"],
+  supabaseFetcher: ["supabaseFetcher", "text"],
   text: ["text"],
   post: ["post"],
   textArea: ["textArea"],
-  svg: ["svg"],
+  send: ["send"],
   footer: ["footer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -237,10 +290,11 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: typeof Header;
+  supabaseFetcher: typeof SupabaseFetcher;
   text: "div";
   post: typeof Post;
   textArea: typeof TextArea;
-  svg: "svg";
+  send: "svg";
   footer: typeof Footer;
 };
 
@@ -306,10 +360,11 @@ export const PlasmicDevocional = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
+    supabaseFetcher: makeNodeComponent("supabaseFetcher"),
     text: makeNodeComponent("text"),
     post: makeNodeComponent("post"),
     textArea: makeNodeComponent("textArea"),
-    svg: makeNodeComponent("svg"),
+    send: makeNodeComponent("send"),
     footer: makeNodeComponent("footer"),
 
     // Metadata about props expected for PlasmicDevocional

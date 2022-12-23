@@ -139,7 +139,7 @@
           "projectId": "gerk99sqDLqAi3xSqDhGNs",
           "renderModuleFilePath": "plasmic/devocional/PlasmicDevocional.tsx",
           "importSpec": {
-            "modulePath": "../pages/devocional/[day]/[month]/[year].tsx"
+            "modulePath": "../pages/devocional/[pid].tsx"
           },
           "cssFilePath": "plasmic/devocional/PlasmicDevocional.module.css",
           "scheme": "blackbox",
@@ -261,6 +261,16 @@
           "id": "SZMvTzr6S",
           "name": "SendIcon",
           "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Send.tsx"
+        },
+        {
+          "id": "e9uKGkPFE",
+          "name": "FacebookIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Facebook.tsx"
+        },
+        {
+          "id": "V3sUXujGK",
+          "name": "GoogleIcon",
+          "moduleFilePath": "plasmic/devocional/icons/PlasmicIcon__Google.tsx"
         }
       ],
       "images": [
@@ -327,6 +337,11 @@
           "id": "tBOLt5kVxI",
           "name": "SubMenu",
           "componentImportPath": "antd/lib/menu/SubMenu"
+        },
+        {
+          "id": "HX-SzYOed0",
+          "name": "SupabaseFetcher",
+          "componentImportPath": "./components/supabase/supabase"
         }
       ]
     },

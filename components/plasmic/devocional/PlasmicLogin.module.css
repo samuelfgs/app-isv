@@ -37,6 +37,9 @@
   position: relative;
   object-fit: cover;
   max-width: 100%;
+  width: 275px;
+  margin-bottom: 50px;
+  flex-shrink: 0;
 }
 .img > picture > img {
   object-fit: cover;
@@ -45,17 +48,42 @@
   object-fit: cover;
 }
 .instagram {
+  flex-direction: row;
   display: flex;
   position: relative;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
+  width: 250px;
   height: auto;
   max-width: 100%;
-  background: #fffa00;
+  background: none;
   border-radius: 20px;
   padding: 20px;
+  border: 1px solid var(--token-UgHlOz321);
+}
+.instagram > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: calc(0px - 20px);
+  width: calc(100% + 20px);
+}
+.instagram > :global(.__wab_flex-container) > *,
+.instagram > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.instagram > :global(.__wab_flex-container) > picture > img,
+.instagram
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 20px;
+}
+.svg___4ISMx {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-UgHlOz321);
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
 }
 .text__oryz3 {
   position: relative;
@@ -63,25 +91,54 @@
   height: auto;
   max-width: 800px;
   text-align: center;
+  color: var(--token-UgHlOz321);
   display: block;
 }
 .google {
+  flex-direction: row;
   display: flex;
   position: relative;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
+  width: 250px;
   height: auto;
   max-width: 100%;
-  background: #fffa00;
+  background: none;
   border-radius: 20px;
   padding: 20px;
+  border: 1px solid var(--token-FJubY3RZi);
 }
-.text__gsyQ {
+.google > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: calc(0px - 20px);
+  width: calc(100% + 20px);
+}
+.google > :global(.__wab_flex-container) > *,
+.google > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.google > :global(.__wab_flex-container) > picture > img,
+.google
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 20px;
+}
+.svg__a0V4 {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-hEhaJs-JO);
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.text__eclwL {
   position: relative;
   width: auto;
   height: auto;
   max-width: 800px;
   text-align: center;
+  color: var(--token-hEhaJs-JO);
+  padding-right: 0px;
+  display: block;
 }

@@ -343,31 +343,7 @@ function PlasmicCalendario__RenderFunc(props: {
                   data-plasmic-override={overrides.link}
                   className={classNames(projectcss.all, projectcss.a, sty.link)}
                   component={Link}
-                  href={`/devocional/${(() => {
-                    const month = (($state.month % 12) + 12) % 12;
-                    const year = 2023 + Math.floor($state.month / 12);
-                    const date = new Date(year, month, 1);
-                    const newDate = new Date(
-                      date.setDate(date.getDate() - $state.delta + currentIndex)
-                    );
-                    return newDate.getDate();
-                  })()}/${(() => {
-                    const month = (($state.month % 12) + 12) % 12;
-                    const year = 2023 + Math.floor($state.month / 12);
-                    const date = new Date(year, month, 1);
-                    const newDate = new Date(
-                      date.setDate(date.getDate() - $state.delta + currentIndex)
-                    );
-                    return newDate.getMonth();
-                  })()}/${(() => {
-                    const month = (($state.month % 12) + 12) % 12;
-                    const year = 2023 + Math.floor($state.month / 12);
-                    const date = new Date(year, month, 1);
-                    const newDate = new Date(
-                      date.setDate(date.getDate() - $state.delta + currentIndex)
-                    );
-                    return newDate.getFullYear();
-                  })()}`}
+                  href={`/devocional/[pid]`}
                   key={currentIndex}
                   platform={"nextjs"}
                 >

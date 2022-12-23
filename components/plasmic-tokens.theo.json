@@ -1,6 +1,16 @@
 {
   "props": [
     {
+      "name": "UnnamedStyleToken",
+      "type": "color",
+      "value": "#000000",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "FJubY3RZi"
+      }
+    },
+    {
       "name": "action-bar-icons",
       "type": "spacing",
       "value": "15px",
@@ -28,6 +38,16 @@
       "meta": {
         "projectId": "gerk99sqDLqAi3xSqDhGNs",
         "id": "i6rk5p67B"
+      }
+    },
+    {
+      "name": "facebook",
+      "type": "color",
+      "value": "#0000FF",
+      "category": "color",
+      "meta": {
+        "projectId": "gerk99sqDLqAi3xSqDhGNs",
+        "id": "UgHlOz321"
       }
     },
     {

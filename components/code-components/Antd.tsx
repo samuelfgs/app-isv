@@ -24,7 +24,6 @@ export class Dropdown extends React.Component<any> {
       ) : (
         this.props.children
       );
-    console.log("dale", this.props.menu);
     finalProps.menu =
         typeof this.props.menu?.props?.children === "string" ? (
           {

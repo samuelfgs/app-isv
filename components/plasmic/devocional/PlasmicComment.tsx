@@ -34,6 +34,7 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
+import { SupabaseFetcher } from "../../supabase/supabase"; // plasmic-import: HX-SzYOed0/codeComponent
 import Avatar from "../../Avatar"; // plasmic-import: Zx9A6DxqtB/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -48,26 +49,19 @@ type VariantPropType = keyof PlasmicComment__VariantsArgs;
 export const PlasmicComment__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicComment__ArgsType = {
-  author?: React.ReactNode;
-  text?: React.ReactNode;
-  avatar?: React.ReactNode;
+  cid?: string;
 };
 
 type ArgPropType = keyof PlasmicComment__ArgsType;
-export const PlasmicComment__ArgProps = new Array<ArgPropType>(
-  "author",
-  "text",
-  "avatar"
-);
+export const PlasmicComment__ArgProps = new Array<ArgPropType>("cid");
 
 export type PlasmicComment__OverridesType = {
   root?: p.Flex<"div">;
+  avatar?: p.Flex<typeof Avatar>;
 };
 
 export interface DefaultCommentProps {
-  author?: React.ReactNode;
-  text?: React.ReactNode;
-  avatar?: React.ReactNode;
+  cid?: string;
   className?: string;
 }
 
@@ -84,8 +78,9 @@ function PlasmicComment__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
-
+        {
+          cid: "3" as const
+        },
         props.args
       ),
     [props.args]
@@ -117,58 +112,175 @@ function PlasmicComment__RenderFunc(props: {
         sty.root
       )}
     >
-      {true ? (
-        <div className={classNames(projectcss.all, sty.freeBox___2R5Mz)}>
-          {true ? (
-            <div className={classNames(projectcss.all, sty.freeBox__hbMc)}>
-              {p.renderPlasmicSlot({
-                defaultContents: (
-                  <Avatar
-                    className={classNames("__wab_instance", sty.avatar__oBhXi)}
-                  />
-                ),
+      <SupabaseFetcher
+        className={classNames("__wab_instance", sty.supabaseFetcher__hCcmh)}
+        filters={(() => {
+          try {
+            return [
+              {
+                column: "id",
+                operator: "eq",
+                value: $props.cid
+              }
+            ];
+          } catch (e) {
+            if (e instanceof TypeError) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
+        name={"comment" as const}
+        table={"comments" as const}
+      >
+        <ph.DataCtxReader>
+          {$ctx => (
+            <SupabaseFetcher
+              className={classNames(
+                "__wab_instance",
+                sty.supabaseFetcher__d3MyL
+              )}
+              filters={(() => {
+                try {
+                  return [
+                    {
+                      column: "id",
+                      operator: "eq",
+                      value: $ctx.comment[0].author_id
+                    }
+                  ];
+                } catch (e) {
+                  if (e instanceof TypeError) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              name={"profile" as const}
+              table={"profiles" as const}
+            >
+              <ph.DataCtxReader>
+                {$ctx => (
+                  <React.Fragment>
+                    {true ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___2R5Mz
+                        )}
+                      >
+                        {true ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__hbMc
+                            )}
+                          >
+                            <Avatar
+                              data-plasmic-name={"avatar"}
+                              data-plasmic-override={overrides.avatar}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.avatar
+                              )}
+                              url={(() => {
+                                try {
+                                  return $ctx.profile[0].avatar_url;
+                                } catch (e) {
+                                  if (e instanceof TypeError) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
+                    {true ? (
+                      <p.Stack
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hQf0
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__wm0Dy
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__lL8JB
+                            )}
+                          >
+                            {(() => {
+                              try {
+                                return $ctx.profile[0].name;
+                              } catch (e) {
+                                if (e instanceof TypeError) {
+                                  return "Discípulo X";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </div>
+                        </div>
 
-                value: args.avatar
-              })}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-      {true ? (
-        <p.Stack
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__hQf0)}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__wm0Dy)}>
-            {p.renderPlasmicSlot({
-              defaultContents: "Discípulo X",
-              value: args.author,
-              className: classNames(sty.slotTargetAuthor)
-            })}
-          </div>
-
-          <div className={classNames(projectcss.all, sty.freeBox__g8Trr)}>
-            {p.renderPlasmicSlot({
-              defaultContents:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the ",
-              value: args.text
-            })}
-          </div>
-        </p.Stack>
-      ) : null}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__g8Trr
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__p0Pun
+                            )}
+                          >
+                            {(() => {
+                              try {
+                                return $ctx.comment[0].text;
+                              } catch (e) {
+                                if (e instanceof TypeError) {
+                                  return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </div>
+                        </div>
+                      </p.Stack>
+                    ) : null}
+                  </React.Fragment>
+                )}
+              </ph.DataCtxReader>
+            </SupabaseFetcher>
+          )}
+        </ph.DataCtxReader>
+      </SupabaseFetcher>
     </p.Stack>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "avatar"],
+  avatar: ["avatar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  avatar: typeof Avatar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -232,6 +344,7 @@ export const PlasmicComment = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    avatar: makeNodeComponent("avatar"),
 
     // Metadata about props expected for PlasmicComment
     internalVariantProps: PlasmicComment__VariantProps,

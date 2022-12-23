@@ -8,6 +8,7 @@ export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
 }
 import "@plasmicpkgs/antd/dist/antd.css";
+import { registerSupabase } from '../components/supabase/supabase';
 
 export const Fetcher = (props: any) => {
   const { data, error } = usePlasmicQueryData(props.endpoint, async () => {
@@ -31,3 +32,4 @@ registerComponent(Fetcher, {
 
 registerTextArea();
 registerAntD();
+registerSupabase();

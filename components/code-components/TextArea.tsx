@@ -49,6 +49,7 @@ export function TextArea(props: {
       style={{
         resize: "none"
       }}
+      autoFocus={true}
     />
   );
 }

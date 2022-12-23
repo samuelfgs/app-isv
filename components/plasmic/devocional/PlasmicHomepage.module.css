@@ -80,6 +80,11 @@
   > img {
   margin-top: 20px;
 }
+.supabaseFetcher:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+}
 .freeBox__mrw4A {
   flex-direction: column;
   display: flex;

@@ -40,6 +40,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_devocional.module.css"; // plasmic-import: gerk99sqDLqAi3xSqDhGNs/projectcss
 import sty from "./PlasmicLogin.module.css"; // plasmic-import: Uta01PJWGq/css
 
+import FacebookIcon from "./icons/PlasmicIcon__Facebook"; // plasmic-import: e9uKGkPFE/icon
+import GoogleIcon from "./icons/PlasmicIcon__Google"; // plasmic-import: V3sUXujGK/icon
+
 export type PlasmicLogin__VariantMembers = {};
 
 export type PlasmicLogin__VariantsArgs = {};
@@ -131,7 +134,7 @@ function PlasmicLogin__RenderFunc(props: {
               displayMaxWidth={"100%" as const}
               displayMinHeight={"0" as const}
               displayMinWidth={"0" as const}
-              displayWidth={"auto" as const}
+              displayWidth={"275px" as const}
               loading={"lazy" as const}
               src={{
                 src: "/plasmic/devocional/images/isv.png",
@@ -143,11 +146,18 @@ function PlasmicLogin__RenderFunc(props: {
           </div>
 
           {true ? (
-            <div
+            <p.Stack
+              as={"div"}
               data-plasmic-name={"instagram"}
               data-plasmic-override={overrides.instagram}
+              hasGap={true}
               className={classNames(projectcss.all, sty.instagram)}
             >
+              <FacebookIcon
+                className={classNames(projectcss.all, sty.svg___4ISMx)}
+                role={"img"}
+              />
+
               {true ? (
                 <div
                   className={classNames(
@@ -159,24 +169,33 @@ function PlasmicLogin__RenderFunc(props: {
                   {"Continuar com Facebook"}
                 </div>
               ) : null}
-            </div>
+            </p.Stack>
           ) : null}
           {true ? (
-            <div
+            <p.Stack
+              as={"div"}
               data-plasmic-name={"google"}
               data-plasmic-override={overrides.google}
+              hasGap={true}
               className={classNames(projectcss.all, sty.google)}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__gsyQ
-                )}
-              >
-                {"Continuar com Google"}
-              </div>
-            </div>
+              <GoogleIcon
+                className={classNames(projectcss.all, sty.svg__a0V4)}
+                role={"img"}
+              />
+
+              {true ? (
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eclwL
+                  )}
+                >
+                  {"Continuar com Google"}
+                </div>
+              ) : null}
+            </p.Stack>
           ) : null}
         </p.Stack>
       </div>

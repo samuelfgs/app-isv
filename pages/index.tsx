@@ -13,13 +13,11 @@ import { supabase } from "../components/supabase/supabase";
 import { useIsLoggedIn } from "../components/hooks";
 
 const getAvatarUrl = (session: Session | null) => {
-  if (!session || !session.user.identities) {
+  if (!session) {
     return undefined;
   }
-  for (const identity of session.user.identities) {
-    if ("avatar_url" in identity.identity_data) {
-      return identity.identity_data.avatar_url
-    }
+  if ("avatar_url" in session.user.user_metadata) {
+    return session.user.user_metadata.avatar_url;
   }
   return undefined;
 }

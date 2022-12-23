@@ -34,8 +34,8 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
+import { SupabaseFetcher } from "../../supabase/supabase"; // plasmic-import: HX-SzYOed0/codeComponent
 import Comment from "../../Comment"; // plasmic-import: d1IXvSf1Cl/component
-import Avatar from "../../Avatar"; // plasmic-import: Zx9A6DxqtB/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -52,25 +52,20 @@ type VariantPropType = keyof PlasmicPost__VariantsArgs;
 export const PlasmicPost__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicPost__ArgsType = {
-  author?: React.ReactNode;
-  children?: React.ReactNode;
+  pid?: string;
 };
 
 type ArgPropType = keyof PlasmicPost__ArgsType;
-export const PlasmicPost__ArgProps = new Array<ArgPropType>(
-  "author",
-  "children"
-);
+export const PlasmicPost__ArgProps = new Array<ArgPropType>("pid");
 
 export type PlasmicPost__OverridesType = {
   root?: p.Flex<"div">;
+  link?: p.Flex<"a"> & Partial<LinkProps>;
   comment?: p.Flex<typeof Comment>;
-  avatar?: p.Flex<typeof Avatar>;
 };
 
 export interface DefaultPostProps {
-  author?: React.ReactNode;
-  children?: React.ReactNode;
+  pid?: string;
   className?: string;
 }
 
@@ -87,8 +82,9 @@ function PlasmicPost__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
-
+        {
+          pid: "5" as const
+        },
         props.args
       ),
     [props.args]
@@ -119,136 +115,275 @@ function PlasmicPost__RenderFunc(props: {
           sty.root
         )}
       >
-        <p.Stack
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__rbzNj)}
+        <SupabaseFetcher
+          className={classNames("__wab_instance", sty.supabaseFetcher__uGttu)}
+          filters={(() => {
+            try {
+              return [
+                {
+                  column: "id",
+                  operator: "eq",
+                  value: $props.pid
+                }
+              ];
+            } catch (e) {
+              if (e instanceof TypeError) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()}
+          table={"posts" as const}
         >
-          {true ? (
-            <p.Stack
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__lInOb)}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__gm0B4)}>
-                {p.renderPlasmicSlot({
-                  defaultContents: "Palavra do Beda",
-                  value: args.author,
-                  className: classNames(sty.slotTargetAuthor)
-                })}
-              </div>
-
-              <div className={classNames(projectcss.all, sty.freeBox___6Obqd)}>
-                {p.renderPlasmicSlot({
-                  defaultContents:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                  value: args.children,
-                  className: classNames(sty.slotTargetChildren)
-                })}
-              </div>
-            </p.Stack>
-          ) : null}
-          {true ? (
-            <div className={classNames(projectcss.all, sty.freeBox__mUf1)}>
+          <ph.DataCtxReader>
+            {$ctx => (
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___93Wdc)}
+                className={classNames(projectcss.all, sty.freeBox__rbzNj)}
               >
                 {true ? (
                   <p.Stack
                     as={"div"}
                     hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox___2LWq)}
+                    className={classNames(projectcss.all, sty.freeBox__lInOb)}
                   >
-                    <LikeIcon
-                      className={classNames(projectcss.all, sty.svg___6OaGh)}
-                      role={"img"}
-                    />
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__gm0B4)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rppCh
+                        )}
+                      >
+                        {"Palavra do Beda"}
+                      </div>
+                    </div>
+
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__kstdr)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___4R1QZ
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $ctx.supabase[0].title;
+                          } catch (e) {
+                            if (e instanceof TypeError) {
+                              return "Titulo";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </div>
+                    </div>
 
                     <div
                       className={classNames(
                         projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__jN30V
+                        sty.freeBox___6Obqd
                       )}
                     >
-                      {"Curtir"}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__sFEcF
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $ctx.supabase[0].text;
+                          } catch (e) {
+                            if (e instanceof TypeError) {
+                              return "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </div>
                     </div>
                   </p.Stack>
                 ) : null}
                 {true ? (
-                  <p.Stack
-                    as={"div"}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox__rkIz9)}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mUf1)}
                   >
-                    <CommentIcon
-                      className={classNames(projectcss.all, sty.svg__g1Int)}
-                      role={"img"}
-                    />
-
-                    <div
+                    <p.Stack
+                      as={"div"}
+                      hasGap={true}
                       className={classNames(
                         projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__r0Npy
+                        sty.freeBox___93Wdc
                       )}
                     >
-                      {"Comentar"}
+                      {true ? (
+                        <p.Stack
+                          as={"div"}
+                          hasGap={true}
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___2LWq
+                          )}
+                        >
+                          <LikeIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___6OaGh
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__jN30V
+                            )}
+                          >
+                            {"Curtir"}
+                          </div>
+                        </p.Stack>
+                      ) : null}
+                      {true ? (
+                        <p.Stack
+                          as={p.PlasmicLink}
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
+                          hasGap={true}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            sty.link
+                          )}
+                          component={Link}
+                          href={`/devocional/${(() => {
+                            try {
+                              return $props.pid;
+                            } catch (e) {
+                              if (e instanceof TypeError) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}`}
+                          platform={"nextjs"}
+                        >
+                          <CommentIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__g1Int
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__r0Npy
+                            )}
+                          >
+                            {"Comentar"}
+                          </div>
+                        </p.Stack>
+                      ) : null}
+                    </p.Stack>
+
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__n0PW)}
+                    >
+                      <SupabaseFetcher
+                        className={classNames(
+                          "__wab_instance",
+                          sty.supabaseFetcher__yzI33
+                        )}
+                        filters={(() => {
+                          try {
+                            return [
+                              {
+                                column: "post_id",
+                                operator: "eq",
+                                value: $props.pid
+                              }
+                            ];
+                          } catch (e) {
+                            if (e instanceof TypeError) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                        table={"comments" as const}
+                      >
+                        <ph.DataCtxReader>
+                          {$ctx =>
+                            (
+                              (() => {
+                                try {
+                                  return $ctx.supabase;
+                                } catch (e) {
+                                  if (e instanceof TypeError) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })() ?? []
+                            ).map((currentItem, currentIndex) => (
+                              <Comment
+                                data-plasmic-name={"comment"}
+                                data-plasmic-override={overrides.comment}
+                                cid={(() => {
+                                  try {
+                                    return currentItem.id;
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.comment
+                                )}
+                                key={currentIndex}
+                              />
+                            ))
+                          }
+                        </ph.DataCtxReader>
+                      </SupabaseFetcher>
                     </div>
-                  </p.Stack>
+                  </div>
                 ) : null}
               </p.Stack>
-
-              <div className={classNames(projectcss.all, sty.freeBox__n0PW)}>
-                {(
-                  (() => {
-                    try {
-                      return [...Array(3).keys()];
-                    } catch (e) {
-                      if (e instanceof TypeError) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })() ?? []
-                ).map((currentItem, currentIndex) => (
-                  <Comment
-                    data-plasmic-name={"comment"}
-                    data-plasmic-override={overrides.comment}
-                    avatar={
-                      <Avatar
-                        data-plasmic-name={"avatar"}
-                        data-plasmic-override={overrides.avatar}
-                        className={classNames("__wab_instance", sty.avatar)}
-                      />
-                    }
-                    className={classNames("__wab_instance", sty.comment)}
-                    key={currentIndex}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : null}
-        </p.Stack>
+            )}
+          </ph.DataCtxReader>
+        </SupabaseFetcher>
       </div>
     ) : null
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "comment", "avatar"],
-  comment: ["comment", "avatar"],
-  avatar: ["avatar"]
+  root: ["root", "link", "comment"],
+  link: ["link"],
+  comment: ["comment"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  link: "a";
   comment: typeof Comment;
-  avatar: typeof Avatar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -312,8 +447,8 @@ export const PlasmicPost = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    link: makeNodeComponent("link"),
     comment: makeNodeComponent("comment"),
-    avatar: makeNodeComponent("avatar"),
 
     // Metadata about props expected for PlasmicPost
     internalVariantProps: PlasmicPost__VariantProps,

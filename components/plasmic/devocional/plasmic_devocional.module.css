@@ -15,6 +15,10 @@
   --plasmic-token-bible-pill: var(--token-ScWXUUrbv);
   --token-wr_HKWkGB: 35px;
   --plasmic-token-user: var(--token-wr_HKWkGB);
+  --token-UgHlOz321: #0000ff;
+  --plasmic-token-facebook: var(--token-UgHlOz321);
+  --token-FJubY3RZi: var(--token-hEhaJs-JO);
+  --plasmic-token-unnamed-style-token: var(--token-FJubY3RZi);
 }
 
 .plasmic_default_styles {
