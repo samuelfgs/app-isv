@@ -183,6 +183,32 @@
           "cssFilePath": "plasmic/devocional/PlasmicLogin.module.css",
           "scheme": "blackbox",
           "componentType": "page"
+        },
+        {
+          "id": "NpvwRoKper",
+          "name": "NewPage",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicNewPage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicNewPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "pyA9tk4uHk",
+          "name": "AvatarMenu",
+          "type": "managed",
+          "projectId": "gerk99sqDLqAi3xSqDhGNs",
+          "renderModuleFilePath": "plasmic/devocional/PlasmicAvatarMenu.tsx",
+          "importSpec": {
+            "modulePath": "AvatarMenu.tsx"
+          },
+          "cssFilePath": "plasmic/devocional/PlasmicAvatarMenu.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -266,6 +292,41 @@
           "id": "YiApBrkKpK",
           "name": "TextArea",
           "componentImportPath": "./components/code-components/TextArea"
+        },
+        {
+          "id": "4bYxzjh232",
+          "name": "Dropdown",
+          "componentImportPath": "./components/code-components/Antd"
+        },
+        {
+          "id": "7YJ3mF3a4X",
+          "name": "DropdownButton",
+          "componentImportPath": "antd/es/dropdown/dropdown-button"
+        },
+        {
+          "id": "bCfY0c5K94",
+          "name": "Menu",
+          "componentImportPath": "antd/lib/menu/index"
+        },
+        {
+          "id": "_qMkP1SpL5",
+          "name": "MenuDivider",
+          "componentImportPath": "antd/lib/menu/MenuDivider"
+        },
+        {
+          "id": "OHsFAtUVi5",
+          "name": "MenuItem",
+          "componentImportPath": "antd/lib/menu/MenuItem"
+        },
+        {
+          "id": "19PvnN_MPw",
+          "name": "ItemGroup",
+          "componentImportPath": "rc-menu"
+        },
+        {
+          "id": "tBOLt5kVxI",
+          "name": "SubMenu",
+          "componentImportPath": "antd/lib/menu/SubMenu"
         }
       ]
     },

@@ -34,7 +34,7 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import Avatar from "../../Avatar"; // plasmic-import: Zx9A6DxqtB/component
+import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -58,19 +58,20 @@ export type PlasmicHeader__ArgsType = {
   children?: React.ReactNode;
   slot?: React.ReactNode;
   onBookClick?: string;
+  avatar?: React.ReactNode;
 };
 
 type ArgPropType = keyof PlasmicHeader__ArgsType;
 export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
   "children",
   "slot",
-  "onBookClick"
+  "onBookClick",
+  "avatar"
 );
 
 export type PlasmicHeader__OverridesType = {
   root?: p.Flex<"div">;
   img?: p.Flex<typeof p.PlasmicImg>;
-  avatar?: p.Flex<typeof Avatar>;
   text?: p.Flex<"div">;
 };
 
@@ -78,6 +79,7 @@ export interface DefaultHeaderProps {
   children?: React.ReactNode;
   slot?: React.ReactNode;
   onBookClick?: string;
+  avatar?: React.ReactNode;
   biblePage?: SingleBooleanChoiceArg<"biblePage">;
   className?: string;
 }
@@ -180,13 +182,25 @@ function PlasmicHeader__RenderFunc(props: {
         </div>
       ) : null}
       {(hasVariant($state, "biblePage", "biblePage") ? true : true) ? (
-        <Avatar
-          data-plasmic-name={"avatar"}
-          data-plasmic-override={overrides.avatar}
-          className={classNames("__wab_instance", sty.avatar, {
-            [sty.avatarbiblePage]: hasVariant($state, "biblePage", "biblePage")
+        <div
+          className={classNames(projectcss.all, sty.freeBox__c0EuP, {
+            [sty.freeBoxbiblePage__c0EuPr33Jt]: hasVariant(
+              $state,
+              "biblePage",
+              "biblePage"
+            )
           })}
-        />
+        >
+          {p.renderPlasmicSlot({
+            defaultContents: (
+              <AvatarMenu
+                className={classNames("__wab_instance", sty.avatarMenu__sciR)}
+              />
+            ),
+
+            value: args.avatar
+          })}
+        </div>
       ) : null}
       {(hasVariant($state, "biblePage", "biblePage") ? true : true) ? (
         <p.Stack
@@ -284,9 +298,8 @@ function PlasmicHeader__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "avatar", "text"],
+  root: ["root", "img", "text"],
   img: ["img"],
-  avatar: ["avatar"],
   text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -295,7 +308,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   img: typeof p.PlasmicImg;
-  avatar: typeof Avatar;
   text: "div";
 };
 
@@ -361,7 +373,6 @@ export const PlasmicHeader = Object.assign(
   {
     // Helper components rendering sub-elements
     img: makeNodeComponent("img"),
-    avatar: makeNodeComponent("avatar"),
     text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicHeader

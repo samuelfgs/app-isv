@@ -22,6 +22,17 @@
 .root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
   margin-top: 20px;
 }
+.freeBox {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 8px;
+}
 .img {
   position: relative;
   object-fit: cover;
@@ -52,6 +63,7 @@
   height: auto;
   max-width: 800px;
   text-align: center;
+  display: block;
 }
 .google {
   display: flex;

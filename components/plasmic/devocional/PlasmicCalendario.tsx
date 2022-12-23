@@ -35,6 +35,7 @@ import {
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
+import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 import SpaceForFixed from "../../SpaceForFixed"; // plasmic-import: b-yBAoSFVG/component
 import Footer from "../../Footer"; // plasmic-import: 4xq6KX_FCQ/component
 
@@ -66,6 +67,7 @@ export const PlasmicCalendario__ArgProps = new Array<ArgPropType>(
 export type PlasmicCalendario__OverridesType = {
   root?: p.Flex<"div">;
   header?: p.Flex<typeof Header>;
+  link?: p.Flex<"a"> & Partial<LinkProps>;
   footer?: p.Flex<typeof Footer>;
 };
 
@@ -118,7 +120,20 @@ function PlasmicCalendario__RenderFunc(props: {
       {
         path: "month",
         type: "private",
-        initFunc: ($props, $state, $ctx) => 3 as const
+        initFunc: ($props, $state, $ctx) =>
+          (() => {
+            try {
+              return (() => {
+                const date = new Date(Date.now());
+                return (date.getFullYear() - 2023) * 12 + date.getMonth();
+              })();
+            } catch (e) {
+              if (e instanceof TypeError) {
+                return 0;
+              }
+              throw e;
+            }
+          })()
       },
 
       {
@@ -323,9 +338,38 @@ function PlasmicCalendario__RenderFunc(props: {
                   }
                 })() ?? []
               ).map((currentItem, currentIndex) => (
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___5NoKl)}
+                <p.PlasmicLink
+                  data-plasmic-name={"link"}
+                  data-plasmic-override={overrides.link}
+                  className={classNames(projectcss.all, projectcss.a, sty.link)}
+                  component={Link}
+                  href={`/devocional/${(() => {
+                    const month = (($state.month % 12) + 12) % 12;
+                    const year = 2023 + Math.floor($state.month / 12);
+                    const date = new Date(year, month, 1);
+                    const newDate = new Date(
+                      date.setDate(date.getDate() - $state.delta + currentIndex)
+                    );
+                    return newDate.getDate();
+                  })()}/${(() => {
+                    const month = (($state.month % 12) + 12) % 12;
+                    const year = 2023 + Math.floor($state.month / 12);
+                    const date = new Date(year, month, 1);
+                    const newDate = new Date(
+                      date.setDate(date.getDate() - $state.delta + currentIndex)
+                    );
+                    return newDate.getMonth();
+                  })()}/${(() => {
+                    const month = (($state.month % 12) + 12) % 12;
+                    const year = 2023 + Math.floor($state.month / 12);
+                    const date = new Date(year, month, 1);
+                    const newDate = new Date(
+                      date.setDate(date.getDate() - $state.delta + currentIndex)
+                    );
+                    return newDate.getFullYear();
+                  })()}`}
                   key={currentIndex}
+                  platform={"nextjs"}
                 >
                   {(() => {
                     try {
@@ -420,7 +464,7 @@ function PlasmicCalendario__RenderFunc(props: {
                       </div>
                     </div>
                   ) : null}
-                </div>
+                </p.PlasmicLink>
               ))}
             </div>
           </div>
@@ -442,8 +486,9 @@ function PlasmicCalendario__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "header", "footer"],
+  root: ["root", "header", "link", "footer"],
   header: ["header"],
+  link: ["link"],
   footer: ["footer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -452,6 +497,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: typeof Header;
+  link: "a";
   footer: typeof Footer;
 };
 
@@ -517,6 +563,7 @@ export const PlasmicCalendario = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
+    link: makeNodeComponent("link"),
     footer: makeNodeComponent("footer"),
 
     // Metadata about props expected for PlasmicCalendario

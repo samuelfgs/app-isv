@@ -35,6 +35,7 @@ import {
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
+import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 import SpaceForFixed from "../../SpaceForFixed"; // plasmic-import: b-yBAoSFVG/component
 import Post from "../../Post"; // plasmic-import: az5Tv6-qkFR/component
 import { TextArea } from "../../code-components/TextArea"; // plasmic-import: YiApBrkKpK/codeComponent

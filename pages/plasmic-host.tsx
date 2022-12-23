@@ -3,11 +3,12 @@ import * as React from 'react';
 import { DataProvider, PlasmicCanvasHost, registerComponent } from '@plasmicapp/host';
 import { usePlasmicQueryData } from '@plasmicapp/query';
 import { registerTextArea } from '../components/code-components/TextArea';
-
+import { registerAll as registerAntD } from '../components/code-components/Antd';
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
 }
-    
+import "@plasmicpkgs/antd/dist/antd.css";
+
 export const Fetcher = (props: any) => {
   const { data, error } = usePlasmicQueryData(props.endpoint, async () => {
     return await (await fetch(`/api/bible/${props.endpoint}/`)).json();
@@ -29,3 +30,4 @@ registerComponent(Fetcher, {
 });
 
 registerTextArea();
+registerAntD();

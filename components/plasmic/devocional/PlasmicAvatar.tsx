@@ -48,17 +48,22 @@ export type PlasmicAvatar__VariantsArgs = {};
 type VariantPropType = keyof PlasmicAvatar__VariantsArgs;
 export const PlasmicAvatar__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicAvatar__ArgsType = {};
+export type PlasmicAvatar__ArgsType = {
+  url?: string;
+};
+
 type ArgPropType = keyof PlasmicAvatar__ArgsType;
-export const PlasmicAvatar__ArgProps = new Array<ArgPropType>();
+export const PlasmicAvatar__ArgProps = new Array<ArgPropType>("url");
 
 export type PlasmicAvatar__OverridesType = {
   root?: p.Flex<"div">;
   freeBox?: p.Flex<"div">;
   svg?: p.Flex<"svg">;
+  img?: p.Flex<typeof p.PlasmicImg>;
 };
 
 export interface DefaultAvatarProps {
+  url?: string;
   className?: string;
 }
 
@@ -106,28 +111,74 @@ function PlasmicAvatar__RenderFunc(props: {
         sty.root
       )}
     >
-      {true ? (
+      {(() => {
+        try {
+          return $props.url === undefined;
+        } catch (e) {
+          if (e instanceof TypeError) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
         <div
           data-plasmic-name={"freeBox"}
           data-plasmic-override={overrides.freeBox}
           className={classNames(projectcss.all, sty.freeBox)}
         >
-          <UserIcon
-            data-plasmic-name={"svg"}
-            data-plasmic-override={overrides.svg}
-            className={classNames(projectcss.all, sty.svg)}
-            role={"img"}
-          />
+          {true ? (
+            <UserIcon
+              data-plasmic-name={"svg"}
+              data-plasmic-override={overrides.svg}
+              className={classNames(projectcss.all, sty.svg)}
+              role={"img"}
+            />
+          ) : null}
         </div>
+      ) : null}
+      {(() => {
+        try {
+          return $props.url !== undefined;
+        } catch (e) {
+          if (e instanceof TypeError) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
+        <p.PlasmicImg
+          data-plasmic-name={"img"}
+          data-plasmic-override={overrides.img}
+          alt={""}
+          className={classNames(sty.img)}
+          displayHeight={"100%" as const}
+          displayMaxHeight={"none" as const}
+          displayMaxWidth={"100%" as const}
+          displayMinHeight={"0" as const}
+          displayMinWidth={"0" as const}
+          displayWidth={"100%" as const}
+          loading={"lazy" as const}
+          src={(() => {
+            try {
+              return $props.url;
+            } catch (e) {
+              if (e instanceof TypeError) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()}
+        />
       ) : null}
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox", "svg"],
+  root: ["root", "freeBox", "svg", "img"],
   freeBox: ["freeBox", "svg"],
-  svg: ["svg"]
+  svg: ["svg"],
+  img: ["img"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -136,6 +187,7 @@ type NodeDefaultElementType = {
   root: "div";
   freeBox: "div";
   svg: "svg";
+  img: typeof p.PlasmicImg;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -201,6 +253,7 @@ export const PlasmicAvatar = Object.assign(
     // Helper components rendering sub-elements
     freeBox: makeNodeComponent("freeBox"),
     svg: makeNodeComponent("svg"),
+    img: makeNodeComponent("img"),
 
     // Metadata about props expected for PlasmicAvatar
     internalVariantProps: PlasmicAvatar__VariantProps,

@@ -36,6 +36,7 @@ import {
 } from "@plasmicapp/react-web";
 import { Fetcher } from "../../../pages/plasmic-host"; // plasmic-import: LxGfpzwDwn/codeComponent
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
+import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 import Footer from "../../Footer"; // plasmic-import: 4xq6KX_FCQ/component
 import SelectChapter from "../../SelectChapter"; // plasmic-import: B3F684OR7c/component
 

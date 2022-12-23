@@ -27,6 +27,14 @@
   min-width: 0;
   display: block;
 }
+.avatarMenu__yAa9C:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
 .freeBox__tnOr {
   display: flex;
   position: relative;

@@ -7,13 +7,16 @@ import { ScreenVariantProvider } from "../components/plasmic/devocional/PlasmicG
 import { PlasmicLogin } from "../components/plasmic/devocional/PlasmicLogin";
 import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
-import { supabase } from "./api/hello";
+import { supabase } from "../components/supabase/supabase";
 
 function Login() {
 
   const onInstagramLogin = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'facebook',
+      options: {
+        redirectTo: "http://localhost:3000/redirect"
+      }
     });
   } 
 
