@@ -15,7 +15,7 @@ function Login() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'facebook',
       options: {
-        redirectTo: "http://localhost:3000/redirect"
+        redirectTo: process.env.NEXT_PUBLIC_REDIRECT_URL
       }
     });
   } 
