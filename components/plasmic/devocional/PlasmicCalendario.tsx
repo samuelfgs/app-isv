@@ -37,6 +37,7 @@ import {
 import Header from "../../Header"; // plasmic-import: VJAoJHfiRt/component
 import AvatarMenu from "../../AvatarMenu"; // plasmic-import: pyA9tk4uHk/component
 import SpaceForFixed from "../../SpaceForFixed"; // plasmic-import: b-yBAoSFVG/component
+import { SupabaseFetcher } from "../../supabase/supabase"; // plasmic-import: HX-SzYOed0/codeComponent
 import Footer from "../../Footer"; // plasmic-import: 4xq6KX_FCQ/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -67,6 +68,7 @@ export const PlasmicCalendario__ArgProps = new Array<ArgPropType>(
 export type PlasmicCalendario__OverridesType = {
   root?: p.Flex<"div">;
   header?: p.Flex<typeof Header>;
+  supabaseFetcher?: p.Flex<typeof SupabaseFetcher>;
   link?: p.Flex<"a"> & Partial<LinkProps>;
   footer?: p.Flex<typeof Footer>;
 };
@@ -205,245 +207,554 @@ function PlasmicCalendario__RenderFunc(props: {
             height={70 as const}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__hrJjk)}>
-            {true ? (
-              <div className={classNames(projectcss.all, sty.freeBox__xSxNj)}>
-                {true ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__sGg5Q)}
-                    onClick={async (...args) => {
-                      const $steps = {};
-                      $steps["Set month"] = true
-                        ? (({ variable, value }) => {
-                            p.set($state, variable, value);
-                            return value;
-                          }).apply(null, [
-                            {
-                              variable: "month" as const,
-
-                              value: $state.month - 1
-                            }
-                          ])
-                        : undefined;
-                      if (
-                        typeof $steps["Set month"] === "object" &&
-                        typeof $steps["Set month"].then === "function"
-                      ) {
-                        $steps["Set month"] = await $steps["Set month"];
-                      }
-                    }}
-                  >
-                    <ChevronLeftIcon
-                      className={classNames(projectcss.all, sty.svg__ygVt)}
-                      role={"img"}
-                    />
-                  </div>
-                ) : null}
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cSFlt
-                  )}
-                >
-                  {(() => {
-                    const month = (($state.month % 12) + 12) % 12;
-                    const year = 2023 + Math.floor($state.month / 12);
-                    return `${$props.months[month]} de ${year}`;
-                  })()}
-                </div>
-
-                {true ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ysDjr)}
-                    onClick={async (...args) => {
-                      const $steps = {};
-                      $steps["Set month"] = true
-                        ? (({ variable, value }) => {
-                            p.set($state, variable, value);
-                            return value;
-                          }).apply(null, [
-                            {
-                              variable: "month" as const,
-
-                              value: $state.month + 1
-                            }
-                          ])
-                        : undefined;
-                      if (
-                        typeof $steps["Set month"] === "object" &&
-                        typeof $steps["Set month"].then === "function"
-                      ) {
-                        $steps["Set month"] = await $steps["Set month"];
-                      }
-                    }}
-                  >
-                    <ChevronRightIcon
-                      className={classNames(projectcss.all, sty.svg__zsGi2)}
-                      role={"img"}
-                    />
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-
-            <div className={classNames(projectcss.all, sty.freeBox__bMlSg)}>
-              {(
-                (() => {
-                  try {
-                    return $props.days;
-                  } catch (e) {
-                    if (e instanceof TypeError) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })() ?? []
-              ).map((currentItem, currentIndex) => (
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___6MrcV)}
-                  key={currentIndex}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__a1ErD
-                    )}
-                  >
-                    {(() => {
-                      try {
-                        return currentItem;
-                      } catch (e) {
-                        if (e instanceof TypeError) {
-                          return "Enter some text";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </div>
-                </div>
-              ))}
-
-              {(
-                (() => {
-                  try {
-                    return [...Array(7 * 6).keys()];
-                  } catch (e) {
-                    if (e instanceof TypeError) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })() ?? []
-              ).map((currentItem, currentIndex) => (
-                <p.PlasmicLink
-                  data-plasmic-name={"link"}
-                  data-plasmic-override={overrides.link}
-                  className={classNames(projectcss.all, projectcss.a, sty.link)}
-                  component={Link}
-                  href={`/devocional/[pid]`}
-                  key={currentIndex}
-                  platform={"nextjs"}
-                >
-                  {(() => {
-                    try {
-                      return (() => {
-                        const month = (($state.month % 12) + 12) % 12;
-                        const year = 2023 + Math.floor($state.month / 12);
-                        const date = new Date(year, month, 1);
-                        const date2 = new Date(
-                          date.setDate(
-                            date.getDate() - $state.delta + currentIndex
-                          )
-                        );
-                        return date2.getMonth() !== month;
-                      })();
-                    } catch (e) {
-                      if (e instanceof TypeError) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__fBoGb
-                      )}
-                    >
-                      {(() => {
-                        const month = (($state.month % 12) + 12) % 12;
-                        const year = 2023 + Math.floor($state.month / 12);
-                        const date = new Date(year, month, 1);
-                        return new Date(
-                          date.setDate(
-                            date.getDate() - $state.delta + currentIndex
-                          )
-                        ).getDate();
-                      })()}
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return (() => {
-                        const month = (($state.month % 12) + 12) % 12;
-                        const year = 2023 + Math.floor($state.month / 12);
-                        const date = new Date(year, month, 1);
-                        const date2 = new Date(
-                          date.setDate(
-                            date.getDate() - $state.delta + currentIndex
-                          )
-                        );
-                        return date2.getMonth() === month;
-                      })();
-                    } catch (e) {
-                      if (e instanceof TypeError) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__slxVa
-                      )}
-                    >
-                      {(() => {
-                        const month = (($state.month % 12) + 12) % 12;
-                        const year = 2023 + Math.floor($state.month / 12);
-                        const date = new Date(year, month, 1);
-                        return new Date(
-                          date.setDate(
-                            date.getDate() - $state.delta + currentIndex
-                          )
-                        ).getDate();
-                      })()}
-                    </div>
-                  ) : null}
+          <SupabaseFetcher
+            data-plasmic-name={"supabaseFetcher"}
+            data-plasmic-override={overrides.supabaseFetcher}
+            className={classNames("__wab_instance", sty.supabaseFetcher)}
+            table={"posts" as const}
+          >
+            <ph.DataCtxReader>
+              {$ctx => (
+                <div className={classNames(projectcss.all, sty.freeBox__hrJjk)}>
                   {true ? (
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__bFls4)}
+                      className={classNames(projectcss.all, sty.freeBox__xSxNj)}
                     >
+                      {true ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__sGg5Q
+                          )}
+                          onClick={async (...args) => {
+                            const $steps = {};
+                            $steps["Set month"] = true
+                              ? (({ variable, value }) => {
+                                  p.set($state, variable, value);
+                                  return value;
+                                }).apply(null, [
+                                  {
+                                    variable: "month" as const,
+
+                                    value: $state.month - 1
+                                  }
+                                ])
+                              : undefined;
+                            if (
+                              typeof $steps["Set month"] === "object" &&
+                              typeof $steps["Set month"].then === "function"
+                            ) {
+                              $steps["Set month"] = await $steps["Set month"];
+                            }
+                          }}
+                        >
+                          <ChevronLeftIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__ygVt
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                      ) : null}
+
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__nklKw
+                          sty.text__cSFlt
                         )}
                       >
-                        {"Título da mensagem"}
+                        {(() => {
+                          const month = (($state.month % 12) + 12) % 12;
+                          const year = 2023 + Math.floor($state.month / 12);
+                          return `${$props.months[month]} de ${year}`;
+                        })()}
                       </div>
+
+                      {true ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__ysDjr
+                          )}
+                          onClick={async (...args) => {
+                            const $steps = {};
+                            $steps["Set month"] = true
+                              ? (({ variable, value }) => {
+                                  p.set($state, variable, value);
+                                  return value;
+                                }).apply(null, [
+                                  {
+                                    variable: "month" as const,
+
+                                    value: $state.month + 1
+                                  }
+                                ])
+                              : undefined;
+                            if (
+                              typeof $steps["Set month"] === "object" &&
+                              typeof $steps["Set month"].then === "function"
+                            ) {
+                              $steps["Set month"] = await $steps["Set month"];
+                            }
+                          }}
+                        >
+                          <ChevronRightIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__zsGi2
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
-                </p.PlasmicLink>
-              ))}
-            </div>
-          </div>
+
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bMlSg)}
+                  >
+                    {(
+                      (() => {
+                        try {
+                          return $props.days;
+                        } catch (e) {
+                          if (e instanceof TypeError) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })() ?? []
+                    ).map((currentItem, currentIndex) => (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___6MrcV
+                        )}
+                        key={currentIndex}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__a1ErD
+                          )}
+                        >
+                          {(() => {
+                            try {
+                              return currentItem;
+                            } catch (e) {
+                              if (e instanceof TypeError) {
+                                return "Enter some text";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </div>
+                      </div>
+                    ))}
+
+                    {true
+                      ? (
+                          (() => {
+                            try {
+                              return [...Array(7 * 6).keys()];
+                            } catch (e) {
+                              if (e instanceof TypeError) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })() ?? []
+                        ).map((currentItem, currentIndex) => (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ohJnX
+                            )}
+                            key={currentIndex}
+                          >
+                            {(() => {
+                              try {
+                                return (() => {
+                                  const month = (($state.month % 12) + 12) % 12;
+                                  const year =
+                                    2023 + Math.floor($state.month / 12);
+                                  const date = new Date(year, month, 1);
+                                  const realDate = new Date(
+                                    date.setDate(
+                                      date.getDate() -
+                                        $state.delta +
+                                        currentIndex
+                                    )
+                                  );
+                                  const day = realDate.getDate();
+
+                                  const realYear = realDate.getFullYear();
+                                  const realMonth = realDate.getMonth() + 1;
+                                  const post = $ctx.supabase.find(
+                                    p =>
+                                      p.date ===
+                                      `${realYear}-${`${realMonth}`.padStart(
+                                        2,
+                                        "0"
+                                      )}-${`${day}`.padStart(2, "0")}`
+                                  );
+                                  return !!post;
+                                })();
+                              } catch (e) {
+                                if (e instanceof TypeError) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <p.PlasmicLink
+                                data-plasmic-name={"link"}
+                                data-plasmic-override={overrides.link}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.a,
+                                  sty.link
+                                )}
+                                component={Link}
+                                href={`/devocional/${(() => {
+                                  try {
+                                    return (() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      const realDate = new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      );
+                                      const day = realDate.getDate();
+
+                                      const realYear = realDate.getFullYear();
+                                      const realMonth = realDate.getMonth() + 1;
+                                      const post = $ctx.supabase.find(
+                                        p =>
+                                          p.date ===
+                                          `${realYear}-${`${realMonth}`.padStart(
+                                            2,
+                                            "0"
+                                          )}-${`${day}`.padStart(2, "0")}`
+                                      );
+                                      if (post) {
+                                        return post.id;
+                                      }
+                                    })();
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}`}
+                                platform={"nextjs"}
+                              >
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      const date2 = new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      );
+                                      return date2.getMonth() !== month;
+                                    })();
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__fBoGb
+                                    )}
+                                  >
+                                    {(() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      return new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      ).getDate();
+                                    })()}
+                                  </div>
+                                ) : null}
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      const date2 = new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      );
+                                      return date2.getMonth() === month;
+                                    })();
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__slxVa
+                                    )}
+                                  >
+                                    {(() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      return new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      ).getDate();
+                                    })()}
+                                  </div>
+                                ) : null}
+                                {true ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__bFls4
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__nklKw
+                                      )}
+                                    >
+                                      {(() => {
+                                        const month =
+                                          (($state.month % 12) + 12) % 12;
+                                        const year =
+                                          2023 + Math.floor($state.month / 12);
+                                        const date = new Date(year, month, 1);
+                                        const realDate = new Date(
+                                          date.setDate(
+                                            date.getDate() -
+                                              $state.delta +
+                                              currentIndex
+                                          )
+                                        );
+                                        const day = realDate.getDate();
+
+                                        const realYear = realDate.getFullYear();
+                                        const realMonth =
+                                          realDate.getMonth() + 1;
+                                        const post = $ctx.supabase?.find(
+                                          p =>
+                                            p.date ===
+                                            `${realYear}-${`${realMonth}`.padStart(
+                                              2,
+                                              "0"
+                                            )}-${`${day}`.padStart(2, "0")}`
+                                        );
+                                        if (post) {
+                                          return post.title;
+                                        }
+                                      })()}
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </p.PlasmicLink>
+                            ) : null}
+                            {(() => {
+                              try {
+                                return (() => {
+                                  const month = (($state.month % 12) + 12) % 12;
+                                  const year =
+                                    2023 + Math.floor($state.month / 12);
+                                  const date = new Date(year, month, 1);
+                                  const realDate = new Date(
+                                    date.setDate(
+                                      date.getDate() -
+                                        $state.delta +
+                                        currentIndex
+                                    )
+                                  );
+                                  const day = realDate.getDate();
+
+                                  const realYear = realDate.getFullYear();
+                                  const realMonth = realDate.getMonth() + 1;
+                                  const post = $ctx.supabase.find(
+                                    p =>
+                                      p.date ===
+                                      `${realYear}-${`${realMonth}`.padStart(
+                                        2,
+                                        "0"
+                                      )}-${`${day}`.padStart(2, "0")}`
+                                  );
+                                  return !post;
+                                })();
+                              } catch (e) {
+                                if (e instanceof TypeError) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__zsEzu
+                                )}
+                              >
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      const date2 = new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      );
+                                      return date2.getMonth() !== month;
+                                    })();
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__pU9ZI
+                                    )}
+                                  >
+                                    {(() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      return new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      ).getDate();
+                                    })()}
+                                  </div>
+                                ) : null}
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      const date2 = new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      );
+                                      return date2.getMonth() === month;
+                                    })();
+                                  } catch (e) {
+                                    if (e instanceof TypeError) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__zgo6W
+                                    )}
+                                  >
+                                    {(() => {
+                                      const month =
+                                        (($state.month % 12) + 12) % 12;
+                                      const year =
+                                        2023 + Math.floor($state.month / 12);
+                                      const date = new Date(year, month, 1);
+                                      return new Date(
+                                        date.setDate(
+                                          date.getDate() -
+                                            $state.delta +
+                                            currentIndex
+                                        )
+                                      ).getDate();
+                                    })()}
+                                  </div>
+                                ) : null}
+                                {true ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__tsumk
+                                    )}
+                                  />
+                                ) : null}
+                              </div>
+                            ) : null}
+                          </div>
+                        ))
+                      : null}
+                  </div>
+                </div>
+              )}
+            </ph.DataCtxReader>
+          </SupabaseFetcher>
 
           <SpaceForFixed
             className={classNames("__wab_instance", sty.spaceForFixed___8Pgca)}
@@ -462,8 +773,9 @@ function PlasmicCalendario__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "header", "link", "footer"],
+  root: ["root", "header", "supabaseFetcher", "link", "footer"],
   header: ["header"],
+  supabaseFetcher: ["supabaseFetcher", "link"],
   link: ["link"],
   footer: ["footer"]
 } as const;
@@ -473,6 +785,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: typeof Header;
+  supabaseFetcher: typeof SupabaseFetcher;
   link: "a";
   footer: typeof Footer;
 };
@@ -539,6 +852,7 @@ export const PlasmicCalendario = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
+    supabaseFetcher: makeNodeComponent("supabaseFetcher"),
     link: makeNodeComponent("link"),
     footer: makeNodeComponent("footer"),
 
