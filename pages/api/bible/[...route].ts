@@ -3,7 +3,7 @@ import { json } from 'stream/consumers';
 
 import nvi from "../../../data/nvi.json";
 
-interface BibleBook {
+export interface BibleBook {
   abbrev: string;
   name: string;
   chapters: string[][];

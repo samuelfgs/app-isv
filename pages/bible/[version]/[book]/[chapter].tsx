@@ -3,27 +3,11 @@
 import * as React from "react";
 import * as ph from "@plasmicapp/host";
 
-import { ScreenVariantProvider } from "../../../../components/plasmic/devocional/PlasmicGlobalVariant__Screen";
 import { PlasmicBible } from "../../../../components/plasmic/devocional/PlasmicBible";
 import { useRouter } from "next/router";
+import { GetStaticPropsContext, NextPageContext } from "next";
 
 function Bible() {
-  // Use PlasmicBible to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicBible are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, PlasmicBible is wrapped by your project's global
-  // variant context providers. These wrappers may be moved to
-  // Next.js Custom App component
-  // (https://nextjs.org/docs/advanced-features/custom-app).
   return (
     <ph.PageParamsProvider
       params={useRouter()?.query}
@@ -34,4 +18,32 @@ function Bible() {
   );
 }
 
+export async function getStaticPaths() {
+  const books = await (await fetch("http://localhost:3000/api/bible/books/")).json() as { abbrev: string, name: string, chapters: number }[];
+  const versions = ["nvi"];
+  return {
+    paths: versions.flatMap(version => 
+      books.flatMap((book) => Array.from(Array(book.chapters).keys())
+        .flatMap(chapter => (
+          {
+            params: {
+              version,
+              book: book.abbrev,
+              chapter: `${chapter + 1}`
+            }
+          }
+        )
+      ))
+    ),
+    fallback: "blocking", // can also be true or 'blocking'
+  }
+}
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    // Passed to the page component as props
+    props: { 
+      ...context.params
+    },
+  }
+}
 export default Bible;
